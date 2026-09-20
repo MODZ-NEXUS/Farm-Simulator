@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#05010f">
+<title>MODZ NEXUS — EMPEROR v6.0</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="splash">
+  <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+  <div class="logo">MODZ</div>
+  <div class="nexus">N E X U S</div>
+  <div class="tag">◈ EMPEROR EDITION v6.0 ◈</div>
+  <div class="loading-bar"><div class="loading-fill" id="loadFill"></div></div>
+  <div class="load-text" id="loadText">جاري التحميل...</div>
+</div>
+
+<header class="top-bar">
+  <button class="hamburger" onclick="toggleDrawer()">☰</button>
+  <div class="brand"><span class="m1">MODZ</span><span class="m2">N E X U S</span></div>
+  <div class="info">
+    <span class="badge money">💰 <span id="topMoney">1,000</span></span>
+    <span class="badge hide-sm">📅 <span id="topDay">1</span></span>
+    <span class="badge hide-sm" id="topRank">🥉 مبتدئ</span>
+    <span class="badge" id="weatherBadge">☀️</span>
+  </div>
+</header>
+
+<div id="drawer-overlay" onclick="toggleDrawer()"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div><div class="logo">MODZ</div><div class="sub">N E X U S</div></div>
+    <button class="close" onclick="toggleDrawer()">✕</button>
+  </div>
+
+  <div class="nav-section">◈ الأساسيات</div>
+  <button class="nav-btn active" data-page="home" onclick="nav('home')"><span class="nav-icon">🏠</span> لوحة القيادة</button>
+  <button class="nav-btn" data-page="farm" onclick="nav('farm')"><span class="nav-icon">🌱</span> المزرعة</button>
+  <button class="nav-btn" data-page="animals" onclick="nav('animals')"><span class="nav-icon">🐄</span> الحيوانات</button>
+  <button class="nav-btn" data-page="greenhouse" onclick="nav('greenhouse')"><span class="nav-icon">🏡</span> الصوبة</button>
+
+  <div class="nav-section">◈ الاقتصاد</div>
+  <button class="nav-btn" data-page="shop" onclick="nav('shop')"><span class="nav-icon">🛒</span> المتجر</button>
+  <button class="nav-btn" data-page="sell" onclick="nav('sell')"><span class="nav-icon">🏪</span> البيع</button>
+  <button class="nav-btn" data-page="bag" onclick="nav('bag')"><span class="nav-icon">🎒</span> المخزون</button>
+  <button class="nav-btn" data-page="market" onclick="nav('market')"><span class="nav-icon">📈</span> السوق</button>
+  <button class="nav-btn" data-page="crafting" onclick="nav('crafting')"><span class="nav-icon">🧪</span> الصناعة</button>
+
+  <div class="nav-section">◈ المغامرات</div>
+  <button class="nav-btn" data-page="quests" onclick="nav('quests')"><span class="nav-icon">📋</span> المهام</button>
+  <button class="nav-btn" data-page="achievements" onclick="nav('achievements')"><span class="nav-icon">🏆</span> الإنجازات</button>
+  <button class="nav-btn" data-page="fishing" onclick="nav('fishing')"><span class="nav-icon">🎣</span> الصيد</button>
+  <button class="nav-btn" data-page="mining" onclick="nav('mining')"><span class="nav-icon">⛏️</span> المناجم</button>
+  <button class="nav-btn" data-page="monsters" onclick="nav('monsters')"><span class="nav-icon">🐉</span> الوحوش</button>
+  <button class="nav-btn" data-page="forest" onclick="nav('forest')"><span class="nav-icon">🌲</span> الغابة</button>
+
+  <div class="nav-section">◈ الترفيه</div>
+  <button class="nav-btn" data-page="casino" onclick="nav('casino')"><span class="nav-icon">🎰</span> الكازينو</button>
+  <button class="nav-btn" data-page="treasure" onclick="nav('treasure')"><span class="nav-icon">🎁</span> الكنوز</button>
+  <button class="nav-btn" data-page="castle" onclick="nav('castle')"><span class="nav-icon">🏰</span> القلعة</button>
+
+  <div class="nav-section">◈ الاجتماعي</div>
+  <button class="nav-btn" data-page="village" onclick="nav('village')"><span class="nav-icon">🏘️</span> القرية</button>
+  <button class="nav-btn" data-page="trading" onclick="nav('trading')"><span class="nav-icon">💱</span> التبادل</button>
+  <button class="nav-btn" data-page="pets" onclick="nav('pets')"><span class="nav-icon">🐕</span> الرفقاء</button>
+
+  <div class="nav-section">◈ المعرفة</div>
+  <button class="nav-btn" data-page="encyclopedia" onclick="nav('encyclopedia')"><span class="nav-icon">📜</span> الموسوعة</button>
+  <button class="nav-btn" data-page="stats" onclick="nav('stats')"><span class="nav-icon">📊</span> الإحصائيات</button>
+  <button class="nav-btn" data-page="settings" onclick="nav('settings')"><span class="nav-icon">⚙️</span> الإعدادات</button>
+</aside>
+
+<main class="main-content">
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero-card">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-title">🌾 إمبراطوريتك</div>
+      <div class="hero-sub">اليوم <span id="heroDay">1</span> — <span id="heroSeason">🌱 الربيع</span></div>
+      <div class="hero-money">💰 <span id="heroMoney">1,000</span></div>
+      <div class="hero-rank" id="heroRank">🥉 مزارع مبتدئ</div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-box"><div class="value" style="color:var(--neon-purple)">⭐ <span id="homeLevel">1</span></div><div class="label">المستوى</div></div>
+    <div class="stat-box"><div class="value" style="color:var(--neon-green)">🌾 <span id="homeFarm">1</span></div><div class="label">المزرعة</div></div>
+    <div class="stat-box"><div class="value" style="color:var(--neon-pink)">🏠 <span id="homeHouse">1</span></div><div class="label">المنزل</div></div>
+    <div class="stat-box"><div class="value" style="color:var(--neon-cyan)">🎯 <span id="homeRep">0</span></div><div class="label">السمعة</div></div>
+  </div>
+
+  <div class="card">
+    <h3>❤️ الحالة الحيوية</h3>
+    <div class="bar-container"><div class="bar-fill bar-energy" id="barEnergy">⚡ 100%</div></div>
+    <div class="bar-container"><div class="bar-fill bar-hunger" id="barHunger">🍲 100%</div></div>
+    <div class="bar-container"><div class="bar-fill bar-thirst" id="barThirst">💧 100%</div></div>
+    <div class="bar-container"><div class="bar-fill bar-health" id="barHealth">❤️ 100%</div></div>
+    <div class="bar-container"><div class="bar-fill bar-happy" id="barHappy">😊 100%</div></div>
+    <div class="bar-container"><div class="bar-fill bar-xp" id="barXP">⭐ 0%</div></div>
+  </div>
+
+  <div class="card">
+    <h3>🌤️ الطقس والموسم</h3>
+    <div class="weather-widget">
+      <div class="w-icon" id="wIcon">☀️</div>
+      <div style="flex:1">
+        <div style="font-weight:900;font-size:1.1em;color:var(--neon-cyan)"><span id="wTemp">22</span>°C</div>
+        <div style="font-size:.78em;color:var(--text2)" id="wDesc">مشمس</div>
+      </div>
+      <div style="font-size:.78em;color:var(--text2);text-align:left">
+        <div id="seasonName" style="color:var(--neon-purple)">🌱 الربيع</div>
+        <div style="font-size:.68em">يوم <span id="seasonDay">1</span>/7</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="eventContainer"></div>
+
+  <div class="card">
+    <h3>⚡ إجراءات سريعة</h3>
+    <div class="btn-group">
+      <button class="btn btn-purple" onclick="sleepNight()">🛏️ نوم</button>
+      <button class="btn btn-green" onclick="eat()">🍲 أكل</button>
+      <button class="btn btn-cyan" onclick="drink()">💧 شرب</button>
+      <button class="btn btn-gold" onclick="collectAll()">📦 جمع الكل</button>
+      <button class="btn btn-pink" onclick="waterAll()">💧 ري الكل</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🏗️ تطوير المنزل</h3>
+    <p id="houseInfo" style="color:var(--text2);font-size:.78em;margin-bottom:10px"></p>
+    <button class="btn btn-green" onclick="upgradeHouse()" id="houseBtn">🔨 ترقية</button>
+  </div>
+
+  <div class="footer">صُنع بواسطة <strong>MODZ NEXUS</strong> © 2026</div>
+</div>
+
+<!-- FARM -->
+<div id="page-farm" class="page">
+  <div class="card">
+    <div class="card-header">
+      <h3>🌱 الأرض <span style="font-size:.68em;color:var(--text2)" id="plotCount"></span></h3>
+    </div>
+    <div class="plots-grid" id="plotsGrid"></div>
+  </div>
+  <div class="card">
+    <h3>🧪 إدارة المزرعة</h3>
+    <div class="btn-group">
+      <button class="btn btn-cyan" onclick="irrigateAll()">💧 ري الكل</button>
+      <button class="btn btn-purple" onclick="fertilizeAll()">🧪 تسميد</button>
+      <button class="btn btn-pink" onclick="treatAll()">💊 علاج</button>
+      <button class="btn btn-orange" onclick="harvestAll()">🌾 حصاد الكل</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🏗️ تطوير المزرعة</h3>
+    <p id="farmInfo" style="color:var(--text2);font-size:.78em;margin-bottom:10px"></p>
+    <button class="btn btn-green" onclick="upgradeFarm()" id="farmBtn">🔨 ترقية</button>
+  </div>
+</div>
+
+<!-- ANIMALS -->
+<div id="page-animals" class="page">
+  <div class="card"><h3>🐄 الحيوانات <span style="font-size:.68em;color:var(--text2)" id="animalCount"></span></h3><div class="animals-grid" id="animalsGrid"></div></div>
+  <div class="card"><h3>🛒 شراء حيوان</h3><div class="shop-grid" id="buyAnimals"></div></div>
+  <div class="card"><h3>🧬 التربية</h3><button class="btn btn-pink" onclick="breedAnimals()">🧬 تربية</button></div>
+</div>
+
+<!-- GREENHOUSE -->
+<div id="page-greenhouse" class="page">
+  <div class="card"><h3>🏡 الصوبة الزجاجية</h3><p style="color:var(--text2);font-size:.8em;margin-bottom:12px">🌡️ تُلغي تأثير الموسم والطقس</p><div id="greenhouseContent"></div></div>
+</div>
+
+<!-- SHOP -->
+<div id="page-shop" class="page">
+  <div class="card"><h3>🌱 البذور</h3><div class="shop-grid" id="shopSeeds"></div></div>
+  <div class="card"><h3>📦 الموارد</h3><div class="shop-grid" id="shopRes"></div></div>
+  <div class="card"><h3>🎰 تذاكر الكازينو</h3><div class="shop-grid" id="shopTickets"></div></div>
+</div>
+
+<!-- SELL -->
+<div id="page-sell" class="page">
+  <div class="card">
+    <h3>🏪 مركز البيع <span style="font-size:.68em;color:var(--text2)" id="sellCount"></span></h3>
+    <p style="color:var(--text2);font-size:.72em;margin-bottom:10px">💡 راقب السوق — بِع لما يرتفع!</p>
+    <div id="sellList"></div>
+  </div>
+</div>
+
+<!-- BAG -->
+<div id="page-bag" class="page">
+  <div class="card"><h3>🎒 المخزون <span style="font-size:.68em;color:var(--text2)" id="invTotal"></span></h3><div class="inventory-grid" id="invGrid"></div></div>
+</div>
+
+<!-- MARKET -->
+<div id="page-market" class="page">
+  <div class="card"><h3>📈 السوق الحي</h3><div class="market-grid" id="marketGrid"></div></div>
+  <div class="card"><h3>📊 المؤشر</h3><div id="marketTrend"></div></div>
+</div>
+
+<!-- CRAFTING (NEW) -->
+<div id="page-crafting" class="page">
+  <div class="card">
+    <h3>🧪 ورشة الصناعة</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:12px">حوّل المواد الخام لمنتجات مصنّعة بقيمة أعلى</p>
+    <div class="craft-grid" id="craftGrid"></div>
+  </div>
+  <div class="card">
+    <h3>🍞 المنتجات المصنّعة</h3>
+    <div class="inventory-grid" id="craftedGrid"></div>
+  </div>
+</div>
+
+<!-- QUESTS -->
+<div id="page-quests" class="page">
+  <div class="card"><h3>📋 المهام اليومية</h3><div id="questsList"></div></div>
+  <div class="card"><h3>📜 مهام القصة</h3><div id="storyQuests"></div></div>
+  <div class="card"><h3>👥 طلبات القرية</h3><div id="villageRequests"></div></div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div id="page-achievements" class="page">
+  <div class="card"><h3>🏆 الإنجازات <span style="font-size:.68em;color:var(--text2)" id="achCount"></span></h3><div class="achievements-grid" id="achGrid"></div></div>
+</div>
+
+<!-- FISHING -->
+<div id="page-fishing" class="page">
+  <div class="card">
+    <h3>🎣 بحيرة الصيد</h3>
+    <div class="fishing-scene" id="fishingScene">
+      <div class="water-anim"></div>
+      <div class="fish-icon" id="fishIcon">🐟</div>
+      <div class="fishing-status" id="fishingStatus">اختر طُعماً</div>
+    </div>
+    <div class="btn-group" style="margin-top:12px">
+      <button class="btn btn-cyan" onclick="castLine()">🎣 إلقاء</button>
+      <button class="btn btn-gold" onclick="autoFish()">⚡ صيد سريع</button>
+    </div>
+  </div>
+  <div class="card"><h3>🐠 سجل الأسماك</h3><div class="inventory-grid" id="fishLog"></div></div>
+</div>
+
+<!-- MINING -->
+<div id="page-mining" class="page">
+  <div class="card">
+    <h3>⛏️ المناجم <span style="font-size:.68em;color:var(--text2)" id="mineDepth"></span></h3>
+    <div class="mine-grid" id="mineGrid"></div>
+    <div class="btn-group" style="margin-top:12px">
+      <button class="btn btn-orange" onclick="mineDig()">⛏️ احفر</button>
+      <button class="btn btn-red" onclick="descendMine()">⬇️ انزل</button>
+      <button class="btn btn-green" onclick="returnToSurface()">⬆️ اصعد</button>
+    </div>
+  </div>
+  <div class="card"><h3>💎 المعادن</h3><div class="inventory-grid" id="oreGrid"></div></div>
+</div>
+
+<!-- MONSTERS (NEW) -->
+<div id="page-monsters" class="page">
+  <div class="card">
+    <h3>🐉 الوحوش في الكهوف</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:12px">⚠️ كل وحش يحتاج قتال — الفوز يمنح ذهباً ومعادن نادرة</p>
+    <div class="monsters-grid" id="monstersGrid"></div>
+  </div>
+  <div class="card">
+    <h3>⚔️ معركة سريعة</h3>
+    <p style="color:var(--text2);font-size:.75em;margin-bottom:10px">اختر وحش من فوق للقتال</p>
+    <div id="battleLog" class="battle-log"></div>
+  </div>
+</div>
+
+<!-- FOREST -->
+<div id="page-forest" class="page">
+  <div class="card">
+    <h3>🌲 الغابة السحرية</h3>
+    <div class="forest-scene">
+      <div class="tree-anim">🌲🌳🌲</div>
+      <div class="forest-status" id="forestStatus">اضغط للبحث</div>
+    </div>
+    <div class="btn-group" style="margin-top:12px">
+      <button class="btn btn-green" onclick="forage()">🌿 ابحث</button>
+      <button class="btn btn-purple" onclick="deepForage()">✨ بحث عميق</button>
+    </div>
+  </div>
+  <div class="card"><h3>🧪 الأعشاب</h3><div class="inventory-grid" id="herbGrid"></div></div>
+</div>
+
+<!-- CASINO (NEW) -->
+<div id="page-casino" class="page">
+  <div class="card">
+    <h3>🎰 كازينو MODZ</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:12px">💰 التذاكر: <span id="ticketCount" style="color:var(--neon-gold);font-weight:900">0</span></p>
+    <div class="casino-grid">
+      <div class="casino-game" onclick="playSlots()">
+        <div class="cg-icon">🎰</div>
+        <div class="cg-name">ماكينة الحظ</div>
+        <div class="cg-desc">ربح حتى 10×</div>
+      </div>
+      <div class="casino-game" onclick="playDice()">
+        <div class="cg-icon">🎲</div>
+        <div class="cg-name">النرد</div>
+        <div class="cg-desc">توقع الرقم</div>
+      </div>
+      <div class="casino-game" onclick="playCards()">
+        <div class="cg-icon">🃏</div>
+        <div class="cg-name">البطاقات</div>
+        <div class="cg-desc">أعلى بطاقة تفوز</div>
+      </div>
+      <div class="casino-game" onclick="playRoulette()">
+        <div class="cg-icon">🎡</div>
+        <div class="cg-name">الروليت</div>
+        <div class="cg-desc">أحمر أم أسود؟</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>📊 سجل الكازينو</h3>
+    <div id="casinoLog" style="font-size:.78em;color:var(--text2)">لم تلعب بعد</div>
+  </div>
+</div>
+
+<!-- TREASURE (NEW) -->
+<div id="page-treasure" class="page">
+  <div class="card">
+    <h3>🎁 صناديق الكنز</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:12px">اشتري صناديق واحصل على جوائز عشوائية (بعضها أسطوري!)</p>
+    <div class="treasure-grid" id="treasureGrid"></div>
+  </div>
+  <div class="card">
+    <h3>📜 سجل الفتحات</h3>
+    <div id="treasureLog" style="font-size:.78em;color:var(--text2)">لم تفتح أي صندوق</div>
+  </div>
+</div>
+
+<!-- CASTLE (NEW) -->
+<div id="page-castle" class="page">
+  <div class="card">
+    <h3>🏰 قلعة المزرعة</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:12px">ابنِ قلعتك وزِد قوتك ضد المزارعين الآخرين</p>
+    <div id="castleContent"></div>
+  </div>
+  <div class="card">
+    <h3>⚔️ معركة PvP</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:10px">قاتل مزارعين آخرين واربح ذهباً وسمعة</p>
+    <button class="btn btn-red" onclick="pvpBattle()">⚔️ ابحث عن خصم</button>
+    <div id="pvpLog" style="margin-top:10px;font-size:.78em"></div>
+  </div>
+</div>
+
+<!-- VILLAGE -->
+<div id="page-village" class="page">
+  <div class="card"><h3>🏘️ القرية</h3><div class="village-grid" id="villageGrid"></div></div>
+  <div class="card"><h3>🎁 هدايا</h3><div id="giftList"></div></div>
+</div>
+
+<!-- TRADING -->
+<div id="page-trading" class="page">
+  <div class="card"><h3>💱 التبادل التجاري</h3><div id="tradingList"></div></div>
+</div>
+
+<!-- PETS -->
+<div id="page-pets" class="page">
+  <div class="card"><h3>🐕 الرفقاء</h3><div class="pets-grid" id="petsGrid"></div></div>
+  <div class="card"><h3>🛒 تبني رفيق</h3><div class="shop-grid" id="buyPets"></div></div>
+</div>
+
+<!-- ENCYCLOPEDIA (NEW) -->
+<div id="page-encyclopedia" class="page">
+  <div class="card">
+    <h3>📜 الموسوعة</h3>
+    <p style="color:var(--text2);font-size:.78em;margin-bottom:12px">كل ما اكتشفته عن العالم</p>
+    <div class="btn-group" style="margin-bottom:12px">
+      <button class="btn btn-green btn-sm" onclick="encTab('crops')">🌾 المحاصيل</button>
+      <button class="btn btn-cyan btn-sm" onclick="encTab('animals')">🐄 الحيوانات</button>
+      <button class="btn btn-blue btn-sm" onclick="encTab('fish')">🐟 الأسماك</button>
+      <button class="btn btn-orange btn-sm" onclick="encTab('ores')">💎 المعادن</button>
+      <button class="btn btn-purple btn-sm" onclick="encTab('herbs')">🌿 الأعشاب</button>
+      <button class="btn btn-red btn-sm" onclick="encTab('monsters')">🐉 الوحوش</button>
+      <button class="btn btn-gold btn-sm" onclick="encTab('crafted')">🧪 المصنّعة</button>
+    </div>
+    <div id="encContent"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div id="page-stats" class="page">
+  <div class="card"><h3>📊 إحصائيات شاملة</h3><ul class="stats-list" id="statsList"></ul></div>
+</div>
+
+<!-- SETTINGS -->
+<div id="page-settings" class="page">
+  <div class="card">
+    <h3>⚙️ الإعدادات</h3>
+    <div class="btn-group">
+      <button class="btn btn-green" onclick="saveGame(true)">💾 حفظ</button>
+      <button class="btn btn-blue" onclick="exportSave()">📦 تصدير</button>
+      <button class="btn btn-orange" onclick="document.getElementById('impFile').click()">📥 استيراد</button>
+      <input type="file" id="impFile" accept=".json" style="display:none" onchange="importSave(event)">
+      <button class="btn btn-red" onclick="resetGame()">🔄 إعادة ضبط</button>
+    </div>
+    <div style="margin-top:14px">
+      <label class="toggle-switch"><span>🔊 المؤثرات الصوتية</span><input type="checkbox" id="soundToggle" checked onchange="toggleSound()"><span class="toggle-slider"></span></label>
+      <label class="toggle-switch"><span>🎵 الموسيقى الخلفية</span><input type="checkbox" id="musicToggle" onchange="toggleMusic()"><span class="toggle-slider"></span></label>
+      <label class="toggle-switch"><span>📳 الاهتزاز</span><input type="checkbox" id="vibrateToggle" onchange="toggleVibrate()"><span class="toggle-slider"></span></label>
+    </div>
+    <p style="color:var(--text2);font-size:.72em;margin-top:14px;text-align:center;line-height:1.8">
+      💾 حفظ تلقائي كل 20 ثانية<br>
+      🏢 MODZ NEXUS v6.0 — EMPEROR<br>
+      © 2026 جميع الحقوق محفوظة
+    </p>
+  </div>
+</div>
+
+</main>
+
+<div id="toastContainer"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
